@@ -61,7 +61,7 @@ public class EndPointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
         if (mListener != null) {
             mListener.onComplete(result);
         }
-        //Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
     }
 
     public interface EndPointListener {
