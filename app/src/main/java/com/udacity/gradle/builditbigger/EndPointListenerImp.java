@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.corebyte.mob.jokeui.JokeDisplayActivity;
 
@@ -32,5 +33,11 @@ public class EndPointListenerImp implements EndPointsAsyncTask.EndPointListener 
     @Override
     public void finishLoading() {
         mProgressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void failToLoad() {
+        Toast.makeText(mContext, "Oops, fail to load joke!",
+                Toast.LENGTH_LONG).show();
     }
 }

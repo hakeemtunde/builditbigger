@@ -49,8 +49,8 @@ public class EndPointsAsyncTask extends AsyncTask<Void, Void, String> {
             return myApiService.sayJoke().execute().getData();
         } catch (IOException e) {
             Log.e(EndPointsAsyncTask.class.getSimpleName(), e.getMessage());
-            mListener.finishLoading();
-            return e.getMessage();
+            if (mListener != null) mListener.finishLoading();
+            return null;
         }
     }
 
@@ -58,14 +58,23 @@ public class EndPointsAsyncTask extends AsyncTask<Void, Void, String> {
     protected void onPostExecute(String result) {
         if (mListener != null) {
             mListener.finishLoading();
-            mListener.onComplete(result);
+
+            if (result != null) {
+                mListener.onComplete(result);
+            } else {
+                mListener.failToLoad();
+            }
+
         }
+
+
     }
 
     public interface EndPointListener {
         public void onComplete(String joke);
         public void loading();
         public void finishLoading();
+        public void failToLoad();
 
     }
 }
