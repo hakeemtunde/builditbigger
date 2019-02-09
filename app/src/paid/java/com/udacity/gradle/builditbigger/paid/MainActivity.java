@@ -1,23 +1,27 @@
-package com.udacity.gradle.builditbigger;
+package com.udacity.gradle.builditbigger.paid;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
-import com.corebyte.mob.jokelib.Joker;
-import com.corebyte.mob.jokeui.JokeDisplayActivity;
+import com.udacity.gradle.builditbigger.EndPointListenerImp;
+import com.udacity.gradle.builditbigger.EndPointsAsyncTask;
+import com.udacity.gradle.builditbigger.R;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mProgressBar = (ProgressBar) findViewById(R.id.loading);
+        mProgressBar.setVisibility(View.INVISIBLE);
     }
 
 
@@ -44,11 +48,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        //api call
-        new EndPointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
-//        Intent intent = new Intent(this, JokeDisplayActivity.class);
-//        intent.putExtra(JokeDisplayActivity.JOKE_TEXT_KEY, Joker.getJoke());
-//        startActivity(intent);
+        EndPointListenerImp endPointListenerImp = new EndPointListenerImp(this, mProgressBar);
+        new EndPointsAsyncTask(endPointListenerImp).execute();
+
     }
 
 
