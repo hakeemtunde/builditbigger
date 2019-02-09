@@ -1,13 +1,13 @@
 package com.udacity.gradle.builditbigger.backend;
 
+import com.corebyte.mob.jokelib.Joker;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
-import com.corebyte.mob.jokelib.Joker;
 
-import javax.inject.Named;
-
-/** An endpoint class we are exposing */
+/**
+ * An endpoint class we are exposing
+ */
 @Api(
         name = "myApi",
         version = "v1",
@@ -19,7 +19,9 @@ import javax.inject.Named;
 )
 public class MyEndpoint {
 
-    /** A simple endpoint method that takes a name and says Hi back */
+    /**
+     * A simple endpoint method that takes a name and says Hi back
+     */
     @ApiMethod(name = "sayJoke", httpMethod = ApiMethod.HttpMethod.GET)
     public MyBean sayJoke() {
         MyBean response = new MyBean();

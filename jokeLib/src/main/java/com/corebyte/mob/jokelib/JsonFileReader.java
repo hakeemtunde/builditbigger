@@ -12,7 +12,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 
 public class JsonFileReader {
@@ -35,7 +34,7 @@ public class JsonFileReader {
     public Joke getJoke() {
         List<Joke> jokes = parseToJson(loadJokeData());
         if (jokes.size() == 0) return new Joke(-1, "--No Jokes", "");
-        int randnum = (int) (Math.random()*99 + 1);
+        int randnum = (int) (Math.random() * 99 + 1);
         return jokes.get(randnum);
     }
 
