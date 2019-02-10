@@ -1,5 +1,5 @@
 # Joke App Summary
-This app is a joke-telling app. It fetches joke from a JSON file and display it to the user.
+This app is a joke-telling app. It fetches joke from Google Cloud Endpoints server and display it to the user.
 
 This App was part of my udacity Android developer nanodegree project. I use Gradle to build a joke-telling app, 
 factor functionality into libraries and flavors to keep the build simple. 
